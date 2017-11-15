@@ -13,7 +13,7 @@ class Neuron:
             inputSum = inputSum + (weightList[i] * activationList[i])
         self.setActivation(1 / (1 + math.exp(-inputSum)))
 
-    # so sera usado (diretamente) pelo input
+    # so sera usado (diretamente) pelo input apenas hehe
     def setActivation(self, value):
         self.activation = value
 
