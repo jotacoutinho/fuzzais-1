@@ -2,10 +2,11 @@ print("Bora porra")
 class Dog:
 
     kind = 'canine'
-    tricks = []
+
 
     def __init__(self, name):
         self.name = name
+        self.tricks = []
 
     def add_trick(self, trick):
         self.tricks.append(trick)
@@ -28,11 +29,9 @@ def neuralMain():
     print(d.name)
     print(e.name)
 
-    print("\n Universal, mas não é obvio pois declaramos como se fosse por instância")
+    print("\nÚnico, pois eu mudei a parada")
     print(d.tricks)
     print(e.tricks)
-
-    print
 
 if __name__ == "__main__":
     neuralMain()
