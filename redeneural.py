@@ -2,20 +2,28 @@ import neuronio
 
 class NeuralNetwork:
 
-    def __init__(self, l, n, i):
-        self.numLayers = l
-        self.numNeurons = n
-        self.neuron = [[0 for i in range(0, n)] for i in range(0, l)]
-        self.input = [i]
+    def __init__(self, layers, neurons, inputs, outputs):
+        self.numLayers = layers
+        self.numNeurons = neurons
+        self.numInputs = inputs
+        self.numOutputs = outputs
+        self.neuron = [[0 for i in range(0, neurons)] for i in range(0, layers)]
+        self.input = [0 for i in range(0, inputs)]
 
     # only internal layers
     def createNetwork(self):
+        #Create Inputs
+        for i in range(0, self.numInputs):
+            self.input[i] = neuronio.Neuron()
+            self.input[i].setAxonList(self.numNeurons)
+
+        #Create Axons and Neurons
         for l in range(0, self.numLayers):
             for n in range(0, self.numNeurons):
                 self.neuron[n][l] = neuronio.Neuron()
-                if (l == 0):
-                    self.input[n].setAxonList(self.numNeurons)
-                else:
+                if (l == self.numLayers-1): #Last internal layer has axons to x number of outputs
+                    self.neuron[n][l].setAxonList(self.numOutputs)
+                else: #Other internal layers have axons to y number of neurons on internal layers
                     self.neuron[n][l].setAxonList(self.numNeurons)
 
     def createListsForPropagation(self, dest, l):

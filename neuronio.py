@@ -19,7 +19,7 @@ class Neuron:
 
     def setAxonList(self, n):
         for i in range(0, n):
-            self.axonList[i] = random.random()
+            self.axonList.append(random.random())
 
     def setAxonWeight(self, i, value):
         self.axonList[i] = value
